@@ -22,6 +22,10 @@ const data = {
   h3: results.h3,
   inScoreRange: [Math.min(...inScores), Math.max(...inScores)],
   outScoreRange: [Math.min(...outScores), Math.max(...outScores)],
+  questions: [
+    ...results.in_corpus.map((r) => ({ ...r, set: "in" })),
+    ...results.out_of_corpus.map((r) => ({ ...r, set: "out" })),
+  ],
   failures: [
     ...results.in_corpus
       .filter((r) => !r.correct_doc)

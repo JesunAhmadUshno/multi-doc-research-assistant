@@ -1,0 +1,29 @@
+[
+ {
+  "shape": "Audit Trail",
+  "theme": "console",
+  "genre": "modern-minimal",
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "page",
+  "hero": "Banner",
+  "nav": "edge-aligned",
+  "footer": "colophon",
+  "imagery": "none",
+  "signature": "threshold gate system diagram over measured verdict readings",
+  "sections": [
+   "hero",
+   "question",
+   "system diagram",
+   "verdicts",
+   "weak stage",
+   "question explorer",
+   "failures",
+   "setup",
+   "footer"
+  ],
+  "waived": [],
+  "prompt": "redesign of the multi-doc research assistant study dashboard",
+  "date": "2026-11-15"
+ }
+]
