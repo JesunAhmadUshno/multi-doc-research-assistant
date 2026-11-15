@@ -1,0 +1,9 @@
+# The WebSocket Protocol
+
+WebSocket is a protocol that gives a browser and a server a single persistent, two-way connection over which both sides can send messages at any time. It exists because plain HTTP is request-response: a client cannot receive data the moment a server produces it without polling, long polling, or other workarounds that waste requests.
+
+A WebSocket connection begins as an ordinary HTTP request with special headers. The client sends an Upgrade request containing a Sec-WebSocket-Key header, a random value encoded in base64. If the server supports the protocol, it replies with status 101 Switching Protocols and a Sec-WebSocket-Accept header, computed by concatenating the key with a fixed protocol GUID, hashing the result with SHA-1, and encoding it in base64. That computation proves the server understood the upgrade request rather than replying by accident from a cache.
+
+After the handshake, the connection stops being HTTP. Both sides exchange data in frames. Each frame carries a small header with an opcode saying whether the payload is text, binary, a ping, a pong, or a close signal, plus the payload length. Frames sent by the client must be masked: the payload is XORed with a random four-byte masking key included in the frame. Masking exists to prevent attacker-controlled scripts from making the connection look like other protocols to confused intermediaries. Server frames are never masked.
+
+Either side may close the connection by sending a close frame, optionally with a numeric status code and a short reason. A code of 1000 means a normal closure. Because connections can also die silently, for example when a laptop sleeps or a network drops packets, applications usually add their own heartbeat: the server pings periodically and treats a missing pong as a dead connection, and clients reconnect with backoff rather than assuming the socket is alive.
