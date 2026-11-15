@@ -299,6 +299,18 @@
   white-space: nowrap;
 }
 .foot-links a:hover { color: var(--color-accent); }
+.support { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: var(--space-lg); }
+.support a {
+  border: var(--rule-hair) solid var(--color-rule-2);
+  border-radius: var(--radius-pill);
+  background: var(--color-paper-2);
+  color: var(--color-ink);
+  padding: var(--space-xs) var(--space-md);
+  text-decoration: none;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.support a:hover { color: var(--color-accent); border-color: var(--color-accent); }
 
 @media (max-width: 60rem) {
   .split-head { grid-template-columns: minmax(0, 1fr); }

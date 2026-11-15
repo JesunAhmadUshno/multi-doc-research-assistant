@@ -520,6 +520,10 @@ export default function App() {
             <a href={`${REPO}/blob/main/PREREGISTRATION.md`}>Pre-registration</a>
             <a href={`${REPO}/blob/main/RESULTS.md`}>Full results</a>
           </p>
+          <p className="support">
+            <a href="https://github.com/sponsors/JesunAhmadUshno">Sponsor this work</a>
+            <a href="https://calendly.com/jesunahmadushno/30min">Work with me</a>
+          </p>
         </div>
       </footer>
     </div>
