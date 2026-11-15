@@ -522,6 +522,8 @@ export default function App() {
           </p>
           <p className="support">
             <a href="https://github.com/sponsors/JesunAhmadUshno">Sponsor this work</a>
+            <a href="https://github.com/sponsors/JesunAhmadUshno">Donate</a>
+            <a href="https://buymeacoffee.com/jesun">Buy Me a Coffee</a>
             <a href="https://calendly.com/jesunahmadushno/30min">Work with me</a>
           </p>
         </div>
