@@ -5,21 +5,32 @@
 @import url("./tokens.css");
 @import url("./base.css");
 
-.page { background: var(--color-paper); color: var(--color-ink); }
+.page {
+  background: var(--bg);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 48px 48px;
+  color: var(--text);
+}
 
 .site-head {
   position: sticky;
   top: 0;
   z-index: var(--z-sticky-nav);
-  background: var(--color-paper);
-  border-bottom: var(--rule-hair) solid var(--color-rule);
+  background: var(--surface);
+  border-bottom: var(--rule-hair) solid var(--border);
 }
 .head-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-lg);
-  padding-block: var(--space-md);
+  padding-block: var(--space-xs);
+}
+.kicker {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 0 var(--space-xs);
 }
 .wordmark {
   font-weight: 500;
@@ -40,7 +51,14 @@
 .head-nav a:hover { color: var(--color-ink); }
 .head-nav a:active { color: var(--color-accent); }
 
-.hero { padding-block: var(--space-3xl) var(--space-2xl); }
+.hero { padding-block: var(--space-lg) var(--space-xs); }
+.hero .container, .section .container {
+  background: var(--surface);
+  border: var(--rule-hair) solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+}
+.hero .container { border: 0; box-shadow: var(--shadow); }
 .hero .lead { margin-top: var(--space-md); color: var(--color-ink-2); }
 .hero-actions {
   display: flex;
@@ -100,8 +118,8 @@
   font-variant-numeric: tabular-nums slashed-zero;
 }
 
-.section { padding-block: var(--section-gap-s); }
-.section.band { background: var(--color-paper-3); color: var(--color-ink); }
+.section { padding-block: var(--space-xs); }
+.section.band { background: transparent; color: var(--text); }
 .section h2 { margin-bottom: var(--space-lg); }
 .split-head {
   display: grid;
@@ -109,6 +127,7 @@
   gap: var(--gap-columns);
   align-items: start;
 }
+.split-head .kicker { grid-column: 1 / -1; margin-bottom: 0; }
 .split-head h2 { grid-column: 1 / 6; margin-bottom: 0; }
 .split-head .section-body { grid-column: 6 / 13; }
 .section-body { color: var(--color-muted); font-size: var(--text-md); line-height: 1.6; }
@@ -285,20 +304,36 @@
 .empty-line { color: var(--color-muted); margin-top: var(--space-lg); }
 
 .site-foot {
-  border-top: var(--rule-hair) solid var(--color-rule);
+  margin-top: var(--space-xl);
   padding-block: var(--space-2xl);
-  background: var(--color-paper-3);
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  box-shadow: 0 0 0 100vmax var(--footer-bg);
+  clip-path: inset(0 -100vmax);
 }
-.foot-claim { color: var(--color-ink-2); max-width: 65ch; line-height: 1.6; }
-.foot-line { color: var(--color-muted); font-size: var(--text-sm); margin-top: var(--space-md); }
+.foot-claim { color: var(--footer-strong); max-width: 65ch; line-height: 1.6; }
+.foot-line { color: var(--footer-text); font-size: var(--text-sm); margin-top: var(--space-md); }
 .foot-links { display: flex; flex-wrap: wrap; gap: var(--space-lg); margin-top: var(--space-lg); }
 .foot-links a {
-  color: var(--color-muted);
+  color: var(--footer-text);
   font-size: var(--text-sm);
-  text-decoration-color: var(--color-rule-2);
+  text-decoration-color: var(--footer-text);
   white-space: nowrap;
 }
-.foot-links a:hover { color: var(--color-accent); }
+.foot-links a:hover { color: var(--footer-strong); }
+.site-foot .support a {
+  border-color: var(--footer-text);
+  background: transparent;
+  color: var(--footer-text);
+}
+.site-foot .support a:hover { background: var(--footer-code-bg); color: var(--footer-strong); border-color: var(--footer-strong); }
+.results-chart { width: 100%; height: auto; margin-top: var(--space-lg); }
+.chart-bar { fill: var(--primary); }
+.chart-bar-line { fill: var(--muted); }
+.chart-bar-soft { fill: var(--warn); }
+.chart-label { fill: var(--text); font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 500; }
+.chart-value { fill: var(--muted); font-family: var(--font-mono); font-size: var(--text-sm); }
+.chart-axis { stroke: var(--border); stroke-width: 1; }
 .support { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: var(--space-lg); }
 .support a {
   border: var(--rule-hair) solid var(--color-rule-2);

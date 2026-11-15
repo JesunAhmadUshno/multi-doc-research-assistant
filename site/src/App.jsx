@@ -101,6 +101,43 @@ function Diagram() {
   );
 }
 
+function ResultsChart() {
+  const rows = [
+    ["H1 accuracy rate", data.h1.rate, "chart-bar"],
+    ["H1 frozen line", data.h1.line, "chart-bar-line"],
+    ["H2 abstention rate", data.h2.rate, "chart-bar"],
+    ["H2 frozen line", data.h2.line, "chart-bar-line"],
+    ["Phrase hit rate, answered", data.h1.secondary_phrase_hit_rate_among_answered, "chart-bar-soft"],
+  ];
+  return (
+    <figure className="diagram-wrap">
+      <svg
+        className="results-chart"
+        viewBox="0 0 720 236"
+        role="img"
+        aria-label="Chart of measured results: H1 accuracy rate and H2 abstention rate against their frozen lines, plus the phrase hit rate among answered questions"
+      >
+        <line className="chart-axis" x1="220" y1="8" x2="220" y2="216" />
+        {rows.map(([label, value, cls], i) => {
+          const y = 16 + i * 40;
+          return (
+            <g key={label}>
+              <text className="chart-label" x="0" y={y + 15}>{label}</text>
+              <rect className={cls} x="220" y={y} width={Math.max(4, Math.round(value * 420))} height="20" rx="4" />
+              <text className="chart-value" x={228 + Math.round(value * 420)} y={y + 15}>{value.toFixed(3)}</text>
+            </g>
+          );
+        })}
+      </svg>
+      <figcaption>
+        Measured rates from study/results.json, drawn against the frozen
+        lines set before any measurement. The phrase hit rate is the
+        secondary measure for the extracted sentence.
+      </figcaption>
+    </figure>
+  );
+}
+
 function VerdictPanel({ title, result, reading, children }) {
   return (
     <article className="panel">
@@ -322,6 +359,7 @@ export default function App() {
       <main id="top">
         <section className="hero">
           <div className="container">
+            <p className="kicker">Pre-registered study</p>
             <h1>Multi-Doc Research Assistant</h1>
             <p className="lead">
               Answers from a folder of documents, with citations, and refuses
@@ -365,6 +403,7 @@ export default function App() {
 
         <section className="section">
           <div className="container split-head">
+            <p className="kicker">Study question</p>
             <h2>What the study asked</h2>
             <p className="section-body">
               Can a local retrieval tool answer questions from a folder of
@@ -380,6 +419,7 @@ export default function App() {
 
         <section className="section band" id="system">
           <div className="container">
+            <p className="kicker">System and flow</p>
             <h2>How the tool works</h2>
             <Diagram />
           </div>
@@ -387,6 +427,7 @@ export default function App() {
 
         <section className="section" id="verdicts">
           <div className="container">
+            <p className="kicker">Measured verdicts</p>
             <h2>Verdicts on the frozen lines</h2>
             <div className="panels">
               <VerdictPanel
@@ -420,11 +461,13 @@ export default function App() {
                 s.
               </VerdictPanel>
             </div>
+            <ResultsChart />
           </div>
         </section>
 
         <section className="section band">
           <div className="container split-head">
+            <p className="kicker">Limits</p>
             <h2>The weak stage, stated plainly</h2>
             <p className="section-body">
               The cited document is usually right, but the single extracted
@@ -440,6 +483,7 @@ export default function App() {
 
         <section className="section" id="questions">
           <div className="container">
+            <p className="kicker">Full record</p>
             <h2>Every question, explorable</h2>
             <p className="section-line">
               All {data.questions.length} frozen questions with their measured
@@ -451,6 +495,7 @@ export default function App() {
 
         <section className="section band" id="failures">
           <div className="container">
+            <p className="kicker">Failures</p>
             <h2>Failure cases, all of them</h2>
             <div className="table-scroll">
               <table className="qtable">
@@ -489,6 +534,7 @@ export default function App() {
 
         <section className="section" id="setup">
           <div className="container split-head">
+            <p className="kicker">Setup</p>
             <h2>Setup</h2>
             <p className="section-body">
               Corpus: {data.corpus.documents} self-written technical
