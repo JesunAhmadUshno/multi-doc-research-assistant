@@ -1,0 +1,21 @@
+source:
+  - changed-files:
+      - any-glob-to-any-file: ["src/**"]
+corpus:
+  - changed-files:
+      - any-glob-to-any-file: ["corpus/**"]
+study:
+  - changed-files:
+      - any-glob-to-any-file: ["study/**"]
+tests:
+  - changed-files:
+      - any-glob-to-any-file: ["tests/**"]
+docs:
+  - changed-files:
+      - any-glob-to-any-file: ["docs/**", "README.md", "REPORT.md", "CHANGELOG.md", "PREREGISTRATION.md", "RESULTS.md"]
+site:
+  - changed-files:
+      - any-glob-to-any-file: ["site/**"]
+automation:
+  - changed-files:
+      - any-glob-to-any-file: [".github/**"]
